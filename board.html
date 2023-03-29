@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/joinlogo.png">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="menu.js"></script>
+    <script src="mini_backend.js"></script>
+    <script src="backend.js"></script>
+    <script src="board.js"></script>
+    <title>
+        Board - Join
+    </title>
+</head>
+
+<body onload="init()">
+    <div w3-include-html="menu.html"></div>
+    <div class="main-div">
+        <div class="dialog-bg d-none" id="dialog-bg-backlog">
+            <div class="dialog" id="dialog-content-backlog"></div>
+        </div>
+        <article class="board-article">
+            <div class="board-div">
+                <header>
+                    <p class="headerName">Board</p>
+                    <p class="p">Learning Management System Project</p>
+                </header>
+
+                <div class="all-tables">
+                    <div class="whole-table-position">
+                        <h3 class="headline headline-responsive">TO DO</h3>
+                        <div class="single-table" id="todo" ondrop="MoveTo('todo', 'To Do')" ondragover="allowDrop(event)"></div>
+                    </div>
+                    <div class="whole-table-position">
+                        <h3 class="headline">IN PROGRESS</h3>
+                        <div class="single-table" id="inprogress" ondrop="MoveTo('inprogress', 'In Progress')" ondragover="allowDrop(event)"></div>
+                    </div>
+                    <div class="whole-table-position">
+                        <h3 class="headline ">TESTING</h3>
+                        <div class="single-table " id="testing" ondrop="MoveTo('testing', 'Testing')" ondragover="allowDrop(event)"></div>
+                    </div>
+                    <div class="whole-table-position">
+                        <h3 class="headline ">DONE</h3>
+                        <div class="single-table " id="done" ondrop="MoveTo('done', 'Done')" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</body>
+
+</html>

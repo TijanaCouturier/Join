@@ -1,0 +1,119 @@
+body {
+    margin: 0px;
+    font-family: 'PT Sans', sans-serif;
+    overflow-y: auto !important;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #16256d;
+    border-radius: 8px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #1E3190;
+}
+
+.body {
+    background-color: rgb(250, 250, 250);
+    position: absolute;
+    left: 170px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-div-impressum {
+    width: calc(100% - 20%);
+    margin-bottom: 20px;
+}
+
+.impressum-block {
+    padding-block-end: 20px;
+}
+
+@media(max-width: 1200px) {
+    .body {
+        left: 0px;
+    }
+    .main-div-impressum {
+        width: 84%;
+        max-height: 70vh;
+    }
+}
+
+@media(max-width: 800px) {
+    .body {
+        padding-top: 130px;
+    }
+    .main-div-impressum {
+        width: 90%;
+        max-height: 90vh;
+        margin-bottom: 40px;
+    }
+}
+
+@media(max-width: 700px) {
+    .body {
+        padding-top: 272px;
+    }
+    .main-div-impressum {
+        width: 90%;
+        max-height: 90vh;
+        margin-bottom: 240px;
+    }
+}
+
+@media(max-width: 580px) {
+    .body {
+        padding-top: 280px;
+    }
+    .main-div-impressum {
+        width: 94%;
+        margin-bottom: 340px;
+    }
+}
+
+@media(max-width: 470px) {
+    .haftung {
+        font-size: 16px;
+        padding-bottom: 20px;
+        background-color: rgb(250, 250, 250);
+    }
+    h1 {
+        font-size: 22px;
+    }
+    .main-div-impressum {
+        width: 95%;
+    }
+    .impressum-link {
+        background-color: rgb(250, 250, 250);
+        margin-top: -20px;
+        padding-bottom: 45px;
+    }
+}

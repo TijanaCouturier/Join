@@ -1,0 +1,304 @@
+body {
+    margin: 0;
+    position: absolute;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.addTask {
+    display: flex;
+    margin-left: 40%;
+    flex-direction: column;
+}
+
+.addtaskTitel {
+    font-size: 18px;
+    margin-bottom: 45px;
+}
+
+.inputContain {
+    display: flex;
+    justify-content: space-around;
+    height: 60vh;
+    width: 60vw;
+    background-color: #f4f2fb;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+.inputStyle {
+    outline: none;
+    width: 25.9vw;
+    height: 5vh;
+    color: #212529;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 15px;
+    border: 1px solid #ced4da;
+    line-height: 1.5;
+    background-clip: padding-box;
+    appearance: none;
+    font-family: 'PT Sans', sans-serif;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.inputStyle:focus {
+    outline: none !important;
+    border: 1px solid #03A9F4;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.inputDescriptionField {
+    width: 25.4vw;
+    height: 20vh;
+    outline: none;
+    border-radius: 5px;
+    color: #212529;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.inputDescriptionField:focus {
+    outline: none !important;
+    border: 1px solid #03A9F4;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+p {
+    color: #1E3190;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 63px;
+    height: 63px;
+    cursor: pointer;
+}
+
+.avartarPicker {
+    display: flex;
+}
+
+.avarta-selected {
+    opacity: 1;
+}
+
+button {
+    outline: none;
+    border: 1px solid rgb(134, 133, 133);
+    width: 12vw;
+    height: 6vh;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: white;
+    cursor: pointer;
+    color: #1E3190;
+}
+
+.buttonStayl {
+    font-weight: bolder;
+}
+
+.buttonContain {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+button:hover {
+    background-color: #1E3190;
+    color: #ccc;
+}
+
+.btn-create-Task {
+    background-color: blue;
+    color: white;
+    font-weight: bolder;
+}
+
+.userNames {
+    color: #1E3190;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.userContain {
+    width: 90px;
+    height: 90px;
+    opacity: 0.4;
+}
+
+.avarta-selected {
+    opacity: 1;
+}
+
+
+/* '-----------------New Task-------JS --------------' */
+
+.taskCreated {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+    background-color: rgb(242, 239, 248);
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    cursor: pointer;
+}
+
+.taskCreated button {
+    margin: 10% 0 0 0;
+}
+
+.d-none {
+    display: none;
+}
+
+.menu-button-img {
+    height: 80px;
+    object-fit: cover;
+    display: none;
+}
+
+.color-1 {
+    background-color: red;
+}
+
+.color-2 {
+    background-color: rgb(228, 228, 68);
+}
+
+.color-3 {
+    background-color: lightgray;
+}
+
+.color-4 {
+    background-color: rgb(49, 181, 49);
+}
+
+@media (max-width: 1200px) {
+    .addTask {
+        display: flex;
+        margin-left: 0%;
+        flex-direction: column;
+    }
+    .taskCreated {
+        top: 40%;
+        max-width: 100vw;
+        position: absolute;
+        left: 25%;
+    }
+    button {
+        width: 18vw;
+    }
+    .buttonContain {
+        display: flex;
+        justify-content: space-between;
+    }
+    .inputContain {
+        height: auto;
+        padding-bottom: 5%;
+        width: 92vw;
+    }
+    .addtaskTitel {
+        padding-left: 30px;
+        font-size: 20px;
+        margin-top: 5rem;
+    }
+    #closed {
+        padding-left: 30px
+    }
+    .inputStyle {
+        width: 40vw;
+    }
+    .inputDescriptionField {
+        width: 40vw;
+    }
+    .avartarPicker {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 950px) {
+    /* width */
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* Track */
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    /* Handle */
+     ::-webkit-scrollbar-thumb {
+        background: #16256d;
+        border-radius: 8px;
+    }
+    /* Handle on hover */
+     ::-webkit-scrollbar-thumb:hover {
+        background: #1E3190;
+    }
+    .inputContain {
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+        margin-bottom: 30px;
+    }
+    .inputStyle {
+        width: 98%;
+    }
+    .urg-cat {
+        width: 99%;
+    }
+    .inputDescriptionField {
+        width: 100%;
+        height: 80px;
+    }
+    button {
+        height: 5vh;
+    }
+    .buttonContain {
+        display: flex;
+        flex-direction: column;
+    }
+    .buttonStayl {
+        margin-left: 0;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .btn-create-Task {
+        width: 100%;
+    }
+    p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 710px) {
+    .inputContain {
+        width: 85vw;
+    }
+}
+
+@media (max-width: 510px) {
+    .inputContain {
+        width: 80vw;
+    }
+    #closed {
+        padding-left: 15px;
+    }
+    .inputStyle {
+        width: 95%;
+    }
+}

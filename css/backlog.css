@@ -1,0 +1,894 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+/* width */
+
+ ::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #16256d;
+    border-radius: 8px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #1E3190;
+}
+
+.menu-container {
+    background-color: #1E3190;
+    height: 100vh;
+    width: 15%;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+}
+
+.menu-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 135px;
+}
+
+
+/* menu points */
+
+
+/*
+.all-hrefs {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.single-href {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    width: 100%;
+    margin: 10px 0px;
+    margin-left: 50px;
+}
+
+.single-href:hover {
+    color: lightgray;
+    cursor: pointer;
+    margin-left: 60px;
+}
+
+#tasks {
+    padding-bottom: 50px;
+}
+
+
+
+
+/* menu profile pic & profile name */
+
+.width {
+    width: 50%;
+}
+
+.profile-menu {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.profile-pic-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-pic-div img {
+    border: 3px solid rgb(0, 0, 0);
+    padding: 1px;
+    background-color: white;
+    height: 60px;
+    border-radius: 50px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.open-menu-close {
+    height: 30px;
+    width: 30px;
+    padding-left: 15px;
+    filter: invert(1);
+    cursor: pointer;
+    margin: 20px;
+}
+
+.img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.username {
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.avatarPerson {
+    display: flex;
+}
+
+.avatarPersonName {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 220px;
+    margin-left: 10px;
+}
+
+.log-out {
+    color: white;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-out:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.div {
+    display: flex;
+    justify-content: center;
+}
+
+.backlog-div {
+    width: 60%;
+    max-height: 100vh;
+}
+
+.tools {
+    color: #3F4294;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.p {
+    font-size: 15px;
+    color: blue;
+    margin-bottom: 40px;
+}
+
+.tools-a {
+    min-width: 310px;
+}
+
+.tools-c {
+    width: 200px;
+}
+
+.tools-d {
+    width: 40%;
+}
+
+.tools-b {
+    width: 140px;
+}
+
+.headerName {
+    font-size: 40px;
+    font-weight: bolder;
+    margin-block-end: 0px;
+}
+
+.contentContainer {
+    width: 17%;
+}
+
+.legendTask {
+    transform: scale(0.6);
+    position: absolute;
+    left: 200px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: #edededd8 0 10px 10px;
+}
+
+.dialog-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog {
+    border-radius: 8px;
+}
+
+.dialog-task {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f4f3fb;
+}
+
+.dialogAllBacklog {
+    width: 45vw;
+    height: 560px;
+    overflow: auto;
+    max-height: 97vh !important;
+    background-color: #f4f2fb;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.d-none {
+    display: none;
+}
+
+.edit-dialog {
+    position: relative;
+}
+
+.edit-dialog .add-task-form {
+    margin-top: 0;
+}
+
+.buttonClose {
+    position: absolute;
+    cursor: pointer;
+    font-size: 22px;
+    color: #1E3190;
+}
+
+.xICon {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    cursor: pointer;
+}
+
+.xICon:hover {
+    opacity: 0.5;
+}
+
+.icon-menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.iconBacklog {
+    cursor: pointer;
+    width: 28px;
+    padding-right: 20px;
+}
+
+.circle-plus {
+    cursor: pointer;
+    font-size: 1.1rem;
+    left: 450px;
+    bottom: 20px;
+    color: #fff;
+    background-color: blue;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 0.25rem;
+    margin: 3px;
+    font-family: inherit;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-cancel {
+    font-family: 'PT Sans', sans-serif;
+    color: blue;
+    font-weight: 600;
+    margin-right: 35px;
+    background-color: #f4f2fb;
+    cursor: pointer;
+    font-size: 1.1rem;
+    left: 450px;
+    bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 0.25rem;
+    margin: 3px;
+    font-family: inherit;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-cancel:hover {
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+
+.square {
+    right: 54px;
+    bottom: 20px;
+}
+
+.board {
+    background-color: white;
+    border: solid 0px whitesmoke;
+    box-shadow: var(--mdc-protected-button-container-elevation, 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12));
+    border-radius: 5%;
+    margin: 3px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.trash-can {
+    border: 1px solid cornflowerblue;
+    border: 1px solid 0px whitesmoke;
+    width: 110px;
+    background-color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 400;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 0.25rem;
+    margin: 3px;
+    font-family: inherit;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.title {
+    font-size: 25px;
+    padding-right: 20px;
+    font-weight: 600;
+    padding-top: 22px;
+}
+
+.titleText {
+    font-size: 20px;
+    padding-left: 65px
+}
+
+.edit-dialog {
+    position: relative;
+}
+
+.backlog-dialog-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backlogTasks {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f4f3fb;
+    min-height: 89px;
+    width: 98%;
+    cursor: pointer;
+}
+
+.backlogTasks:hover {
+    background-color: #e8e5f8;
+}
+
+.backlogAssigned {
+    display: flex;
+    align-items: center;
+    min-width: 300px;
+}
+
+.assigned-to {
+    margin-bottom: 15px;
+}
+
+.backlogCategory {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    word-break: break-all;
+    width: 200px;
+}
+
+.backlogDescription {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    width: 40%;
+}
+
+.tasksDialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.title-decoration {
+    font-size: 17px;
+    font-weight: bold;
+    color: #5c5a5a;
+}
+
+.description-decoration {
+    color: #7f858d;
+    padding-top: 5px;
+}
+
+.column-dialog {
+    display: flex;
+    padding-left: 30px;
+}
+
+.categoryPadding {
+    padding-right: 50px;
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.categoryID {
+    padding-left: 18px;
+    font-size: 17px;
+}
+
+.category {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.urgencyID {
+    padding-left: 25px;
+    font-size: 17px;
+}
+
+.dateID {
+    padding-left: 20px;
+    font-size: 17px;
+}
+
+.descriptionTitle {
+    padding-right: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    min-height: 80px;
+}
+
+.description {
+    font-size: 17px;
+    padding-left: 8px;
+    min-width: 175px;
+}
+
+.name {
+    font-size: 17px;
+}
+
+.inputContain {
+    background-color: rgb(242, 239, 248);
+    border-radius: 10px;
+}
+
+.inputStyle {
+    outline: none;
+    height: 4vh;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #212529;
+    width: 98%;
+    padding-left: 15px;
+    font-family: 'PT Sans', sans-serif;
+    outline-color: rgb(30, 166, 142);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.inputStyle:focus {
+    outline: none !important;
+    border: 1px solid #03A9F4;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.inputStyleD {
+    outline: none;
+    height: 5vh;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #212529;
+    min-width: 22vw;
+    padding-left: 15px;
+    font-family: 'PT Sans', sans-serif;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.inputStyleD:focus {
+    outline: none !important;
+    border: 1px solid #03A9F4;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.inputDescriptionField {
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
+    color: #212529;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    width: 98%;
+    font-family: 'PT Sans', sans-serif;
+    padding-left: 15px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.inputDescriptionField:focus {
+    outline: none !important;
+    border: 1px solid #03A9F4;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.inputBox {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.inputData {
+    outline: none;
+    height: 5vh;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #212529;
+    width: 200px;
+    padding-left: 15px;
+    font-family: 'PT Sans', sans-serif;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.inputData:focus {
+    outline: none !important;
+    border: 1px solid #03A9F4;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+p {
+    color: #1E3190;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.avartarPicker {
+    display: flex;
+}
+
+.buttonStayl {
+    font-weight: bolder;
+}
+
+.buttonContain {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 25px;
+}
+
+button:hover {
+    border: 1px solid #1E3190;
+    color: #ccc;
+}
+
+.contentEdit {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    cursor: pointer;
+    opacity: 0.6;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    margin-right: 35px;
+}
+
+#noSelected {
+    color: red;
+}
+
+.avartarPicker {
+    display: flex;
+    margin-top: 10px;
+}
+
+.avarta-selected {
+    opacity: 1;
+}
+
+.userContain {
+    width: 90px;
+    height: 80px;
+    opacity: 0.4;
+}
+
+.userNames {
+    color: #1E3190;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.color-1 {
+    background-color: #03a9f4;
+}
+
+.color-2 {
+    background-color: rgb(228, 228, 68);
+}
+
+.color-3 {
+    background-color: lightgray;
+}
+
+.color-4 {
+    background-color: rgb(49, 181, 49);
+}
+
+.Sale {
+    color: #673AB7;
+    font-weight: bold;
+}
+
+.Product {
+    color: #59b1f6;
+    font-weight: bold;
+}
+
+.Marketing {
+    color: rgb(172, 202, 4);
+    font-weight: bold;
+}
+
+.Management {
+    color: rgb(170, 29, 140);
+    font-weight: bold;
+}
+
+.Low {
+    border-left: 4px solid green;
+}
+
+.Medium {
+    border-left: 4px solid #dede04;
+}
+
+.Important {
+    border-left: 4px solid darkmagenta;
+}
+
+.High {
+    border-left: 4px solid red;
+}
+
+@media (max-width: 1450px) {
+    .backlog-div {
+        width: 70%;
+        max-height: 100vh;
+        padding-left: 150px;
+    }
+    .iconBacklog {
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .headerName {
+        font-size: 36px;
+    }
+    .div {
+        display: flex;
+        justify-content: center;
+        padding-top: 100px;
+    }
+    .backlog-div {
+        width: 90%;
+        padding-left: 0px;
+    }
+    .buttonContain {
+        display: flex;
+        flex-direction: column;
+        padding-right: 0px;
+    }
+    .trash-can {
+        width: 99%;
+    }
+    .width {
+        width: 100%;
+    }
+    .board {
+        height: 3vh;
+    }
+    .menuIcons {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1025px) {
+    /* width */
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* Track */
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    /* Handle */
+     ::-webkit-scrollbar-thumb {
+        background: #16256d;
+        border-radius: 8px;
+    }
+    /* Handle on hover */
+     ::-webkit-scrollbar-thumb:hover {
+        background: #1E3190;
+    }
+    .xICon {
+        top: 120px;
+    }
+    .inputBox {
+        display: flex;
+        flex-direction: column;
+    }
+    .inputStyleD {
+        width: 100%;
+    }
+    .inputData {
+        height: 5vh;
+    }
+    .buttonContain {
+        display: flex;
+        flex-direction: column;
+        padding-right: 0px;
+    }
+    .trash-can {
+        width: 99%;
+    }
+    .width {
+        width: 100%;
+    }
+    .menuIcons {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    .profile-pic-div img {
+        height: 55px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .backlogTasks {
+        margin-top: 20px;
+    }
+    .tools {
+        display: none;
+    }
+    .avatarPerson {
+        padding-top: 5px;
+    }
+    .backlogTasks {
+        display: flex;
+        flex-direction: column;
+    }
+    .backlogDescription {
+        padding-top: 5px;
+        padding-bottom: 20px;
+        width: 95%;
+    }
+    .description-decoration {
+        padding-top: 10px;
+    }
+    .iconBacklog {
+        padding-right: 30px;
+    }
+    .contentEdit {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 940px) {
+    .backlogTasks {
+        width: 92%;
+    }
+    .dialogAllBacklog {
+        width: 80vw;
+    }
+}
