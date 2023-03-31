@@ -133,7 +133,11 @@ async function changeTask(i, page) {
     tasks[i].Description = document.getElementById(`change-${page}-description`).value;
     tasks[i].Date = document.getElementById(`change-${page}-date`).value;
     tasks[i].Urgency = document.getElementById(`change-${page}-urgency`).value;
+    await isAvatarSelected();
+}
 
+
+async function isAvatarSelected() {
     if (sel != null && sel != -1) {
         users[i] = users_avatar[sel];
     }
@@ -209,7 +213,6 @@ function selectUser(x, n) {
         setUsersPointerEvents('auto');
         sel = null;
     }
-
     user.classList.toggle('avarta-selected');
     if (userSelected == true) {
         userSelected
@@ -251,13 +254,11 @@ function iterateUser(i) {
     for (let n = 0; n < users_avatar.length; n++) {
         s = s + `<img title="${users_avatar[n].name}" id="user-${users_avatar[n].name}" onclick="selectUser('${users_avatar[n].name}', ${n})" src="img/${users_avatar[n].img}" class="avatar"></img>`
     }
-
     return s;
 }
 
 
 function templateMoveTo(i, page) {
-
     return `
 
     <div class="dialogAllBacklog" id="${page}-item-${i}">

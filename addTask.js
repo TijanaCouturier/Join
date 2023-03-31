@@ -87,8 +87,8 @@ function selectUser(i) {
     } else if (user.className == 'userContain avarta-selected') {
         setUsersPointerEvents('auto');
     }
-
     user.classList.toggle('avarta-selected');
+
     u = i;
     if (userSelected == true) {
         userSelected
@@ -135,13 +135,22 @@ async function pushInputFolder() {
     allTasks = [];
     await downloadFromServer2();
     await loadFromBackend2();
+    formField();
+    titel.value = '';
+    category.value = '';
+    description.value = '';
+    date.value = '';
+    urgancy.value = '';
+    await saveToBackend2();
+}
 
+
+function formField() {
     let titel = document.getElementById('inputTitel');
     let category = document.getElementById('inputCategory');
     let description = document.getElementById('inputDescription');
     let date = document.getElementById('inputDate');
     let urgancy = document.getElementById('inputUrgency');
-
     let task = {
         'Titel': titel.value,
         'Category': category.value,
@@ -151,16 +160,8 @@ async function pushInputFolder() {
         'processing_state': 'backlog',
         'processing_state_style': 'Backlog'
     };
-
     allTasks.push(task);
     selectedUsers.push(users[u]);
-
-    titel.value = '';
-    category.value = '';
-    description.value = '';
-    date.value = '';
-    urgancy.value = '';
-    await saveToBackend2();
 }
 
 

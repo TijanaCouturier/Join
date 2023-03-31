@@ -54,10 +54,8 @@ function newLogin() {
 async function checkUserStatus() {
     let currentUserName = document.getElementById('username').value;
     let currentUserMail = document.getElementById('usermail').value;
-
     let stringUserName = jsonFromServer['usernames'];
     let stringUserMail = jsonFromServer['usermails'];
-
     stringUserName.replace(/["\[\]"]+/g, "");
     stringUserMail.replace(/["\[\]"]+/g, "");
 

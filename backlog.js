@@ -24,7 +24,6 @@ function showBacklog() {
     taskList.innerHTML = '';
     let nile = true;
     for (let i = 0; i < tasks.length; i++) {
-        console.log('2');
         if (tasks[i].processing_state == 'backlog') {
             taskList.innerHTML += templateBacklog(i);
             nile = false;
