@@ -4,10 +4,10 @@
  *  
  * @param {none}
  * */
-
 function openMenu() {
     document.getElementById('menu').classList.remove('d-none');
 }
+
 
 /**
  * 
@@ -15,75 +15,41 @@ function openMenu() {
  * 
  * @param {none}
  */
-
 function closeMenu() {
     document.getElementById('menu').classList.add('d-none');
 }
 
+
 /**
  * 
  * Function to add white border left to the respective href in the menu
- * 
  * @param {none}
  */
 
 function menuInit() {
     if (window.location.href == 'https://tijana-couturier.developerakademie.net/Join/board.html') {
-        addBorderToJoinHref();
+        //addBorderToJoinHref();
+        addBorderToHref('board-menu-point');
     } else if (window.location.href == 'https://tijana-couturier.developerakademie.net/Join/backlog.html') {
-        addBorderToBacklogHref();
+        //addBorderToBacklogHref();
+        addBorderToHref('backlog-menu-point');
     } else if (window.location.href == 'https://tijana-couturier.developerakademie.net/Join/addTask.html') {
-        addBorderToAddTaskHref();
+        //addBorderToAddTaskHref();
+        addBorderToHref('addtask-menu-point');
     } else if (window.location.href == 'https://tijana-couturier.developerakademie.net/Join/help.html') {
-        addBorderToHelpHref();
+        //addBorderToHelpHref();
+        addBorderToHref('help-menu-point');
     }
 }
 
 
 /**
  * 
- * Function to add white border left to the board href in the menu
+ * Function to add white border left to the in menu_param specified href in the menu
  * 
- * @param {none}
+ * @param {menu_param}
  */
-
-function addBorderToJoinHref() {
-    document.getElementById('board-menu-point').classList.remove('single-href');
-    document.getElementById('board-menu-point').classList.add('single-href-active');
-}
-
-/**
- * 
- * Function to add white border left to the backlog href in the menu
- * 
- * @param {none}
- */
-
-function addBorderToBacklogHref() {
-    document.getElementById('backlog-menu-point').classList.remove('single-href');
-    document.getElementById('backlog-menu-point').classList.add('single-href-active');
-}
-
-/**
- * 
- * Function to add white border left to the addtask href in the menu
- * 
- * @param {none}
- */
-
-function addBorderToAddTaskHref() {
-    document.getElementById('addtask-menu-point').classList.remove('single-href');
-    document.getElementById('addtask-menu-point').classList.add('single-href-active');
-}
-
-/**
- * 
- * Function to add white border left to the help href in the menu
- * 
- * @param {none}
- */
-
-function addBorderToHelpHref() {
-    document.getElementById('help-menu-point').classList.remove('single-href');
-    document.getElementById('help-menu-point').classList.add('single-href-active');
+function addBorderToHref(menu_param) {
+    document.getElementById(menu_param).classList.remove('single-href');
+    document.getElementById(menu_param).classList.add('single-href-active');
 }

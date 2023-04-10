@@ -2,13 +2,9 @@ setURL('https://tijana-couturier.developerakademie.net/smallest_backend_ever');
 
 let currentDraggedElement;
 
-/**
- * 
+/** 
  * init function to load the jsons from the backend and insert them in the todo table
- * 
- * @param {none}
  */
-
 async function init() {
     await downloadFromServer();
     await loadFromBackend();
@@ -18,13 +14,10 @@ async function init() {
     updateHTML();
 }
 
-/**
- * 
- * function to add all the tasks loaded out of the backend to the todo table
- * 
- * @param {none}
- */
 
+/**
+ * function to add all the tasks loaded out of the backend to the todo table
+ */
 function showBoard() {
     let tasksBoard = document.getElementById('todo');
     tasksBoard.innerHTML = '';
@@ -34,30 +27,34 @@ function showBoard() {
 }
 
 
+/**
+ * function which open task dialog and edit task
+ */
 function openTask(i, page) {
     openDialog(`dialog-bg-${page}`);
     document.getElementById(`dialog-content-${page}`).innerHTML = templateMove(i, page);
 }
 
 
+/**
+ * Function that opens the task dialog
+ */
 function openDialog() {
     document.getElementById('dialog-bg-backlog').classList.remove('d-none');
 }
 
 
+/**
+ *  Function that closed the task dialog 
+ */
 function closeDialog() {
     document.getElementById('dialog-bg-backlog').classList.add('d-none');
 }
 
 
-
 /**
- * 
  * function to delete a done task from the board
- * 
- * @param {number} i - respective id of every respective tas
  */
-
 async function markAsDone(i) {
     let currentTask = document.getElementById(i);
     currentTask.remove();
@@ -68,13 +65,13 @@ async function markAsDone(i) {
 
 /**
  * Function to open the info menu for the current task
- * 
- * @param {number}
  */
-
 open = true;
 
 
+/**
+ * Change status - move to the board or table
+ */
 async function changeStatus(i, page) {
     let formBoard = document.getElementById('formBoard');
     tasks[i].processing_state = document.getElementById(`statusBoard${i}`).value;
@@ -85,6 +82,9 @@ async function changeStatus(i, page) {
 }
 
 
+/**
+ * transform processstate - table change
+ */
 function transformProcessState(prc) {
     if (prc == 'todo') {
         return 'To Do'
@@ -100,15 +100,14 @@ function transformProcessState(prc) {
 
 
 /**
- * 
  * function which is initialized when you start dragging a task in the board and this function gives the respective id of the respective task which is being dragged as a value to the variable currentDraggedElement
  * 
  * @param {string} id - id of the respective task which is being dragged
  */
-
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
 
 /**
  * 
@@ -116,7 +115,6 @@ function startDragging(id) {
  * 
  * @param {event} event - which is needed to rewrite the settings of the respectful div/table to place the respectful task in the respectful div/table
  */
-
 function allowDrop(event) {
     event.preventDefault();
 }
@@ -128,7 +126,6 @@ function allowDrop(event) {
  * 
  * @param {id} processingState - id of the respective table to which the respective task should be moved
  */
-
 function MoveTo(processing_state, processing_state_style) {
     tasks[currentDraggedElement].processing_state = processing_state;
     tasks[currentDraggedElement].processing_state_style = processing_state_style;
@@ -137,13 +134,10 @@ function MoveTo(processing_state, processing_state_style) {
     updateHTML();
 }
 
-/**
- * 
- * function which renders all tasks after the respective tasks have received their new json lines
- * 
- * @param {none}
- */
 
+/**
+ * function which renders all tasks after the respective tasks have received their new json lines
+ */
 function updateHTML() {
     document.getElementById('todo').innerHTML = '';
     document.getElementById('inprogress').innerHTML = '';
@@ -154,18 +148,11 @@ function updateHTML() {
         let element = tasks[i]['processing_state'];
         if (element == "todo" || element == "inprogress" || element == "testing" || element == "done") {
             document.getElementById(element).innerHTML += templateBoard(i);
-            //  adjustColors(i);
         }
     }
 }
 
 
-/**
- * 
- * function which adjusts the color of the left border of every respective task according to the table in which the respective tasks are in
- * 
- * @param {number} i - respective id of every respective task
- */
 /**
  * 
  * function which adds the menu.html file to the board.html file
@@ -187,9 +174,9 @@ async function includeHTML() {
     }
 }
 
+
 /**
- * 
- * template function which is used for all render functions of board.js   <button  type="button" class="btn-close" style=" background-color: white;" aria-label="Close"><img onclick="markAsDone(${i})" src="./img/x-icon.png"class="xICon"></button>
+ * template function which is used for all render functions of board.js   
  * 
  * @param {number} i - respective element of the json loaded from the backend
  */
@@ -205,7 +192,7 @@ function templateBoard(i) {
             <div class="todo-deadline" id="todo-deadline-${i}">${tasks[i]['Date']}</div>
             <div class="todo-title" id="todo-title-${i}"><h5 style=" font-weight: 400; font-size: 1.2rem; color: #4e4b4b;">${tasks[i]['Titel']}</h5></div>
             </div>
-            <button  type="button" class="btn-close" style=" background-color: white;" aria-label="Close"><img onclick="event.stopPropagation();markAsDone(${i})" title="delete Task" src="./img/x-icon.png"class="xICon"></button>
+            <button  type="button" class="btn-close" style=" background-color: white;" aria-label="Close"><img onclick="event.stopPropagation(); markAsDone(${i})" title="delete Task" src="./img/x-icon.png"class="xICon"></button>
         </div>
         <p style="color: gray; font-size: smaller;">${tasks[i]['Description']}</p>
         <div class="new-task-details" id="new-task-details-${i}">
@@ -230,7 +217,7 @@ function templateMove(i) {
            <div>
             <p id="boardtasktitle${i}" class="card-title">${tasks[i].Titel}</p>
             <p id="boardtaskDate${i}" class="card-subtitle mb-2 text-muted">${tasks[i].Date}</p>
-            <p id="boardtaskDescription${i}" class="card-text">${tasks[i].Description} Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p id="boardtaskDescription${i}" class="card-text">${tasks[i].Description}</p>
             <div style="display: flex; justify-content: space-between; padding-top: 10px; padding-bottom: 10px;">
             <p id="boardtaskcategory${i}" class="border-category ${tasks[i]['Category']}">${tasks[i].Category}</p>
             <p id="boardtaskurgency${i}" class="p-${tasks[i]['Urgency']}" style="padding-right: 20px;">${tasks[i].Urgency}</p>

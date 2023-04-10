@@ -11,6 +11,9 @@ let emails = [{
 ];
 
 
+/**
+ * start function
+ */
 async function init() {
     await downloadFromServer();
     await loadFromBackend();
@@ -19,6 +22,9 @@ async function init() {
 }
 
 
+/**
+ * show backlog - saved tasks are shown here
+ */
 function showBacklog() {
     let taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
@@ -36,6 +42,9 @@ function showBacklog() {
 }
 
 
+/**
+ * show it if there is no task in the backlog
+ */
 function renderAddTaskMessage() {
     return `
     <a href="./addTask.html" class="add-message">Currently, there is no task in backlog. You can add a task in the "Add Task" section.</p>
@@ -43,6 +52,9 @@ function renderAddTaskMessage() {
 }
 
 
+/**
+ * add task to board
+ */
 async function addToBord(i) {
     tasks[i].processing_state = 'todo';
     tasks[i].processing_state_style = 'To Do';
@@ -51,12 +63,18 @@ async function addToBord(i) {
 }
 
 
+/**
+ * update everything that is saved in backlog
+ */
 async function updateBacklog() {
     showBacklog();
     await saveToBackend();
 }
 
 
+/**
+ * template - backlog start backlog
+ */
 function templateBacklog(i) {
     return `
  <div onclick="openTask(${i}, 'backlog')" class="backlogTasks ${tasks[i]['Urgency']}" ${tasks[i]['Category']}" id="backlogTasks-${i}">
@@ -88,6 +106,9 @@ function templateBacklog(i) {
 }
 
 
+/**
+ * include HTML part
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {

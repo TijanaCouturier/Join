@@ -57,13 +57,25 @@ html {
     padding-block-end: 20px;
 }
 
+.text-data-guidelines {
+    height: 100vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+}
+
 @media(max-width: 1200px) {
     .body {
-        left: 0px;
+        position: inherit;
     }
     .main-div-impressum {
         width: 84%;
         max-height: 70vh;
+    }
+    .text-data-guidelines {
+        padding-left: 40px;
+        top: 90px;
+        position: absolute;
     }
 }
 
@@ -91,7 +103,7 @@ html {
 
 @media(max-width: 580px) {
     .body {
-        padding-top: 260px;
+        padding-top: 280px;
     }
     .main-div-impressum {
         width: 94%;
@@ -105,9 +117,6 @@ html {
         padding-bottom: 20px;
         background-color: rgb(250, 250, 250);
     }
-    h1 {
-        font-size: 22px;
-    }
     .main-div-impressum {
         width: 95%;
     }
@@ -115,5 +124,21 @@ html {
         background-color: rgb(250, 250, 250);
         margin-top: -20px;
         padding-bottom: 45px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    ul {
+        padding-inline-start: 7px;
+    }
+}
+
+@media(max-width: 470px) {
+    .text-data-guidelines {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }

@@ -4,10 +4,10 @@ let users = [];
 let tasks = [];
 let userSelected = false;
 let selectedUsers = [];
+let selAvatarUser; //
 let editTaskId;
-let u;
 let sel;
-let s;
+
 
 let users_avatar = [{
         'img': 'Anja.jpg',
@@ -27,6 +27,9 @@ let users_avatar = [{
 ];
 
 
+/** 
+ * init function to load the jsons from the backend and insert them in the todo table
+ */
 async function init() {
     includeHTML();
     await downloadFromServer();
@@ -35,6 +38,9 @@ async function init() {
 }
 
 
+/*
+ * function which download all from Server
+ */
 async function saveToBackend() {
     let usersAsJSON = JSON.stringify(users);
     let tasksAsJSON = JSON.stringify(tasks);
@@ -43,21 +49,24 @@ async function saveToBackend() {
 }
 
 
+/*
+ * function which load all (JSON) from Server
+ */
 async function loadFromBackend() {
     //let a = await backend.deleteItem('saveUser');
     //let b = await backend.deleteItem('saveTask');
-    console.log('jsonFromServer', jsonFromServer);
     let usersAsJSON = await backend.getItem('saveUser');
     let tasksAsJSON = await backend.getItem('saveTask');
 
     users = JSON.parse(usersAsJSON) || [];
     tasks = JSON.parse(tasksAsJSON) || [];
-    console.log('Loaded', users);
-    console.log('Loaded', tasks);
     //saveToBackend();
 }
 
 
+/*
+ * Function to select saved option
+ */
 function selectSavedOption(id, variable) {
     Array.from(document.querySelector(`#${id}`).options).forEach(function(option_element) {
         if (option_element.value == variable) {
@@ -67,16 +76,27 @@ function selectSavedOption(id, variable) {
 }
 
 
+/*
+ * Function that opens the task dialog
+ */
 function openDialog(id) {
     document.getElementById(id).classList.remove('d-none');
+    document.body.classList.add('overflow-hidden');
 }
 
 
-function closeDialog(id) {
-    document.getElementById(id).classList.add('d-none');
+/*
+ * Function that closed the task dialog
+ */
+function closeDialog() {
+    document.getElementById('dialog-bg-backlog').classList.add('d-none');
+    document.body.classList.remove('overflow-hidden');
 }
 
 
+/*
+ * function which open task dialog and edit task
+ */
 function openTask(i, page) {
     openDialog(`dialog-bg-${page}`);
     document.getElementById(`dialog-content-${page}`).innerHTML = templateMoveTo(i, page);
@@ -84,7 +104,10 @@ function openTask(i, page) {
 }
 
 
-async function deleteTask(i, page, backlogAlert, event) {
+/*
+ * function to delete a done task from the board
+ */
+async function deleteTask(i, page) {
     tasks.splice(i, 1);
     users.splice(i, 1);
     await update(page);
@@ -92,6 +115,9 @@ async function deleteTask(i, page, backlogAlert, event) {
 }
 
 
+/*
+ * alert wenn kein task im backlog gespeichert ist
+ */
 function renderAddTaskMessage() {
     return `
     <a href="./addTask.html" class="add-message">Currently, there is no task in backlog. You can add tasks in the "Add Task" section or move back from board.</p>
@@ -99,10 +125,12 @@ function renderAddTaskMessage() {
 }
 
 
+/*
+ * function that updates saved changes in the board or backlog
+ */
 async function update(page) {
     switch (page) {
         case 'backlog':
-            console.log('updatepage', page);
             await updateBacklog();
             break;
         case 'board':
@@ -112,6 +140,9 @@ async function update(page) {
 }
 
 
+/*
+ * function which updates the json line 'processing_state' of the respective task to the id of the respective table to which the task should be moved
+ */
 async function move(i, page) {
     switch (page) {
         case 'backlog':
@@ -127,17 +158,25 @@ async function move(i, page) {
 }
 
 
+/*
+ * function to change and save changes in dialog in backlog
+ */
 async function changeTask(i, page) {
     tasks[i].Titel = document.getElementById(`change-${page}-title`).value;
     tasks[i].Category = document.getElementById(`change-${page}-category`).value;
     tasks[i].Description = document.getElementById(`change-${page}-description`).value;
     tasks[i].Date = document.getElementById(`change-${page}-date`).value;
     tasks[i].Urgency = document.getElementById(`change-${page}-urgency`).value;
-    await isAvatarSelected();
+    await isAvatarSelected(i, page);
 }
 
 
-async function isAvatarSelected() {
+
+
+/*
+ * function that checks if a user is selected
+ */
+async function isAvatarSelected(i, page) {
     if (sel != null && sel != -1) {
         users[i] = users_avatar[sel];
     }
@@ -150,6 +189,9 @@ async function isAvatarSelected() {
 }
 
 
+/*
+ * after saving a task, the task is directly saved in backlog
+ */
 function renderBacklogAlert(event) {
     let backlogAlert = document.getElementById('backlogalert');
     backlogAlert.innerHTML = '';
@@ -160,6 +202,9 @@ function renderBacklogAlert(event) {
 }
 
 
+/*
+ * Alert when a task is moved, deleted, or eded
+ */
 function alertCases(backlogAlert, event) {
     switch (event) {
         case 'MovedToBoard':
@@ -175,6 +220,9 @@ function alertCases(backlogAlert, event) {
 }
 
 
+/*
+ * Alert when a task is moved from the backlog to the board
+ */
 function templateAlertMessage() {
     return `
     <div class="card-alert slide-in"><p>Task has been pushed to the board!</p></div>
@@ -182,6 +230,9 @@ function templateAlertMessage() {
 }
 
 
+/*
+ * Alert when a task is deleted
+ */
 function templateAlertMessage2() {
     return `
     <div class="card-alert slide-in"><p>Task has been deleted!</p></div>
@@ -189,6 +240,9 @@ function templateAlertMessage2() {
 }
 
 
+/*
+ * Alert when a task is edited
+ */
 function templateAlertMessage3() {
     return `
     <div class="card-alert slide-in"><p>Task has been successfully edited!</p></div>
@@ -196,6 +250,9 @@ function templateAlertMessage3() {
 }
 
 
+/*
+ * Alert if no user is selected
+ */
 function noSelected() {
     return `
     <p> Please select one User.</p>
@@ -203,6 +260,9 @@ function noSelected() {
 }
 
 
+/*
+ * Function with which a user is selected
+ */
 function selectUser(x, n) {
     let user = document.getElementById('user-' + x);
     if (user.className == 'avatar') {
@@ -220,15 +280,21 @@ function selectUser(x, n) {
 }
 
 
-function setUsersPointerEvents(s) {
+/*
+ * selected avatar User
+ */
+function setUsersPointerEvents(selAvatarUser) {
     let user_tmp = "";
     for (let n = 0; n < users_avatar.length; n++) {
         user_tmp = document.getElementById('user-' + users_avatar[n].name);
-        user_tmp.style.pointerEvents = s;
+        user_tmp.style.pointerEvents = selAvatarUser;
     }
 }
 
 
+/*
+ * Function with which a reset Users
+ */
 async function resetUsers() {
     let user_tmp = "";
     for (let n = 0; n < users.length; n++) {
@@ -242,22 +308,25 @@ async function resetUsers() {
 
 
 function setEditAssignedUsers(editTasks) {
-    editTasks["assignedTo"].forEach((element) => {
+    editTasks['assignedTo'].forEach((element) => {
         document.getElementById("user-" + element).classList.add('avatar-selected');
     });
-    selectedUsers = editTasks["assignedTo"];
+    selectedUsers = editTasks['assignedTo'];
 }
 
 
 function iterateUser(i) {
-    let s = "";
+    let selAvatarUser = "";
     for (let n = 0; n < users_avatar.length; n++) {
-        s = s + `<img title="${users_avatar[n].name}" id="user-${users_avatar[n].name}" onclick="selectUser('${users_avatar[n].name}', ${n})" src="img/${users_avatar[n].img}" class="avatar"></img>`
+        selAvatarUser = selAvatarUser + `<img title="${users_avatar[n].name}" id="user-${users_avatar[n].name}" onclick="selectUser('${users_avatar[n].name}', ${n})" src="img/${users_avatar[n].img}" class="avatar"></img>`
     }
-    return s;
+    return selAvatarUser;
 }
 
 
+/*
+ * template - dialog from backlog to the edited
+ */
 function templateMoveTo(i, page) {
     return `
 
@@ -299,7 +368,8 @@ function templateMoveTo(i, page) {
     <div class="inputBox">
         <div class="width">
          <p>DUE DATE</p>
-           <input   id="change-${page}-date"  value = "${tasks[i].Date}" name="date" class="inputData" required type="date">
+           <input   id="change-${page}-date"  min="${new Date().toISOString().split('T')[0]}" value = "${tasks[i].Date}" name="date" class="inputData" required type="date">
+          
         </div>
         <div class="width">
             <div>

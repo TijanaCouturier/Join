@@ -3,6 +3,12 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+}
+
 
 /* width */
 
@@ -48,40 +54,6 @@ html {
     align-items: center;
     height: 135px;
 }
-
-
-/* menu points */
-
-
-/*
-.all-hrefs {
-    width: 100%;
-    height: 45vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.single-href {
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-    width: 100%;
-    margin: 10px 0px;
-    margin-left: 50px;
-}
-
-.single-href:hover {
-    color: lightgray;
-    cursor: pointer;
-    margin-left: 60px;
-}
-
-#tasks {
-    padding-bottom: 50px;
-}
-
-
 
 
 /* menu profile pic & profile name */

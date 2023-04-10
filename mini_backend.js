@@ -14,7 +14,6 @@ const backend = {
     },
     deleteItem: function(key) {
         delete jsonFromServer[key];
-        console.log('savetodel' + key, jsonFromServer);
         return saveJSONToServer();
     }
 };
@@ -25,12 +24,7 @@ window.onload = async function() {
 
 async function downloadFromServer() {
     let result = await loadJSONFromServer();
-    console.log('Loaded2222', result);
     jsonFromServer = JSON.parse(result);
-
-    console.log('Loaded2', result);
-    console.log('Loaded', jsonFromServer);
-
 }
 
 

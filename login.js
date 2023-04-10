@@ -17,6 +17,7 @@ async function initLogin() {
     await loadData();
 }
 
+
 /**
  * 
  * function to download needed arrays from localstorage
@@ -32,6 +33,7 @@ async function loadData() {
     let usermailsAfterLocalStorage = JSON.parse(usermailsAsText);
 }
 
+
 /**
  * 
  * function to check if respectful user who's trying to log in has already logged in before, as if so, he would not have to create a new account
@@ -44,10 +46,10 @@ function newLogin() {
     setTimeout(checkUserStatus(), 2000);
 }
 
+
 /**
  * 
- * function to check if user is new or had logged in before
- * 
+ * function to check if user is new or had logged in before 
  * @param {none}
  */
 
@@ -84,6 +86,7 @@ function redirect() {
     return window.location.href = "https://tijana-couturier.developerakademie.net/Join/addTask.html?";
 }
 
+
 /**
  * 
  * function to save login informations (username && email) of new registered users to the usernames && usermails arrays
@@ -99,6 +102,7 @@ async function save() {
     await backend.setItem('usermails', usermailsAsText);
 }
 
+
 /**
  * 
  * function to open the sign in menu
@@ -108,9 +112,9 @@ async function save() {
 
 function openSignInMenu() {
     document.getElementById('login-menu-div').style = 'display: none';
-
     document.getElementById('sign-in-menu-div').style = 'display: auto';
 }
+
 
 /**
  * 
@@ -121,9 +125,9 @@ function openSignInMenu() {
 
 function closeSignInMenu() {
     document.getElementById('sign-in-menu-div').style = 'display: none';
-
     document.getElementById('login-menu-div').style = 'display: auto';
 }
+
 
 /**
  * 

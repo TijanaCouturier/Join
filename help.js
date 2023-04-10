@@ -1,9 +1,15 @@
+/**
+ * init function
+ */
 async function init() {
     await includeHTML();
     menuInit();
 }
 
 
+/**
+ * About us
+ */
 function buttonUns() {
     document.getElementById('buttonUns').classList.remove('d-none');
     document.getElementById('buttonKanban').classList.add('d-none');
@@ -11,6 +17,9 @@ function buttonUns() {
 }
 
 
+/**
+ * Kanban
+ */
 function buttonKanban() {
     document.getElementById('buttonUns').classList.add('d-none');
     document.getElementById('buttonKanban').classList.remove('d-none');
@@ -18,6 +27,9 @@ function buttonKanban() {
 }
 
 
+/**
+ * all buttons in help
+ */
 function buttonImpressum() {
     document.getElementById('buttonImpressum').classList.remove('d-none');
     document.getElementById('buttonKanban').classList.add('d-none');
@@ -25,6 +37,9 @@ function buttonImpressum() {
 }
 
 
+/**
+ * includeHTML
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {

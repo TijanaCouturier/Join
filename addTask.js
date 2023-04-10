@@ -4,8 +4,8 @@ setURL('https://tijana-couturier.developerakademie.net/smallest_backend_ever');
 let userSelected = false;
 let selectedUsers = [];
 let allTasks = [];
-let u;
-let s;
+let userSelcheck; //
+let selAvatarUser; //
 
 let users = [{
         'img': 'Anja.jpg',
@@ -25,29 +25,40 @@ let users = [{
 ];
 
 
+/** 
+ * init function to load the jsons from the backend and insert them in the todo table
+ */
 async function init() {
     addAvartar();
     await includeHTML();
     await downloadFromServer2();
     await loadFromBackend2();
     menuInit();
+
 }
 
 
+/** 
+ * function which download all from Server
+ */
 async function downloadFromServer2() {
     let result = await loadJSONFromServer2();
     jsonFromServer = JSON.parse(result);
-    console.log('Loaded2', result);
-    console.log('Loaded', jsonFromServer);
 }
 
 
+/*
+ * function which load all (JSON) from Server
+ */
 async function loadJSONFromServer2() {
     let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&noache=' + (new Date().getTime()));
     return await response.text();
 }
 
 
+/*
+ * function which saved all tasks to backend
+ */
 async function saveToBackend2() {
     let saveTask = JSON.stringify(allTasks);
     let saveUser = JSON.stringify(selectedUsers);
@@ -56,6 +67,9 @@ async function saveToBackend2() {
 }
 
 
+/*
+ *  function which loaded all tasks to backend
+ */
 async function loadFromBackend2() {
     let saveTask = await backend.getItem('saveTask');
     let saveUser = await backend.getItem('saveUser');
@@ -64,6 +78,9 @@ async function loadFromBackend2() {
 }
 
 
+/*
+ *  function which add Person in Task
+ */
 async function addAvartar() {
     let avatarPicker = document.getElementById('avartarPicker');
     avatarPicker.innerHTML = '';
@@ -79,6 +96,9 @@ async function addAvartar() {
 }
 
 
+/*
+ *  function which selected one User
+ */
 function selectUser(i) {
     let user = document.getElementById('user-' + i);
     if (user.className == 'userContain') {
@@ -89,22 +109,28 @@ function selectUser(i) {
     }
     user.classList.toggle('avarta-selected');
 
-    u = i;
+    userSelcheck = i;
     if (userSelected == true) {
         userSelected
     }
 }
 
 
+/*
+ * Function with which a user be deactivated
+ */
 function setUsersPointerEvents(s) {
     let user_tmp = "";
     for (let n = 0; n < users.length; n++) {
         user_tmp = document.getElementById('user-' + n);
-        user_tmp.style.pointerEvents = s;
+        user_tmp.style.pointerEvents = userSelcheck;
     }
 }
 
 
+/*
+ * Function with which a user can no longer be selected
+ */
 async function resetUsers() {
     let user_tmp = "";
     for (let n = 0; n < users.length; n++) {
@@ -117,35 +143,33 @@ async function resetUsers() {
 }
 
 
+/*
+ * function which create new Task
+ */
 async function createNewTask() {
     await pushInputFolder();
     await backNewTask();
-    s = "test";
+    selAvatarUser = "test";
     window.location.assign("./backlog.html");
 }
 
 
+/*
+ * restart everything after saving
+ */
 async function backNewTask() {
     resetUsers();
 }
 
 
+/*
+ * function to push input folder in backend
+ */
 async function pushInputFolder() {
     selectedUsers = [];
     allTasks = [];
     await downloadFromServer2();
     await loadFromBackend2();
-    formField();
-    titel.value = '';
-    category.value = '';
-    description.value = '';
-    date.value = '';
-    urgancy.value = '';
-    await saveToBackend2();
-}
-
-
-function formField() {
     let titel = document.getElementById('inputTitel');
     let category = document.getElementById('inputCategory');
     let description = document.getElementById('inputDescription');
@@ -161,10 +185,21 @@ function formField() {
         'processing_state_style': 'Backlog'
     };
     allTasks.push(task);
-    selectedUsers.push(users[u]);
+    selectedUsers.push(users[userSelcheck]);
+
+    titel.value = '';
+    category.value = '';
+    description.value = '';
+    date.value = '';
+    urgancy.value = '';
+    await saveToBackend2();
 }
 
 
+
+/*
+ *  function which cleared all Inputfolder
+ */
 function clearAllInputFolder() {
     document.getElementById('inputTitel').value = '';
     document.getElementById('inputCategory').value = '';
@@ -173,7 +208,14 @@ function clearAllInputFolder() {
     document.getElementById('inputUrgency').value = '';
 }
 
+/*
+let today = new Date().toISOString().split('T')[0];
+document.getElementsByName('inputDate')[0].setAttribute('min', today);
+*/
 
+/*
+ *  function which adds the menu.html file to the board.html file
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {

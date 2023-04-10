@@ -14,7 +14,7 @@
 </head>
 
 <body onload="init()">
-    <!-- ----------------Templates html menü  -------------  -->
+    <!-- ----------------Templates html menu  -------------  -->
     <div>
         <div w3-include-html="menu.html"></div>
     </div>
@@ -29,11 +29,11 @@
                     <div class="inputBox">
                         <div>
                             <p>TITEL</p>
-                            <input id="inputTitel" name="text" class="inputStyle" required type="text"></input>
+                            <input id="inputTitel" name="text" class="inputStyle width-90 " required type="text"></input>
                         </div>
                         <div style="padding-top: 15px; padding-bottom: 15px;">
                             <p>CATEGORY</p>
-                            <select class="inputStyle cursor urg-cat " name="text" id="inputCategory" required>
+                            <select class="inputStyle cursor urg-cat width-100" name="text" id="inputCategory" required>
                                 <option value="" disabled selected hidden>Please select</option>
                                 <option value="Sale">Sale</option>
                                 <option value="Marketing">Marketing</option>
@@ -49,11 +49,14 @@
                     <div class="inputBox">
                         <div>
                             <p>DUE DATE</p>
-                            <input id="inputDate" name="date" class="inputStyle cursor" required type="date">
+                            <input id="inputDate" name="date" class="inputStyle cursor width-90 " required type="date">
+                            <script>
+                                document.getElementById("inputDate").setAttribute("min", new Date().toISOString().split('T')[0]);
+                            </script>
                         </div>
                         <div style="padding-top: 15px; padding-bottom: 15px; cursor:pointer;">
                             <p>URGENCY</p>
-                            <select class="inputStyle cursor urg-cat " id="inputUrgency" name="text" placeholder="Urgency" required>
+                            <select class="inputStyle cursor urg-cat width-100" id="inputUrgency" name="text" placeholder="Urgency" required>
                              <option value="" disabled selected hidden>Please select </option>
                              <option value="Low">Low</option>
                              <option value="Medium">Medium</option>

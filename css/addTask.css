@@ -28,18 +28,27 @@ body {
 
 .inputStyle {
     outline: none;
-    width: 25.9vw;
+    /* width: 25.9vw; */
     height: 5vh;
     color: #212529;
     border-radius: 5px;
     font-size: 16px;
     padding-left: 15px;
+    padding-right: 15px;
     border: 1px solid #ced4da;
     line-height: 1.5;
     background-clip: padding-box;
     appearance: none;
     font-family: 'PT Sans', sans-serif;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.width-100 {
+    width: 100%;
 }
 
 .inputStyle:focus {
@@ -49,8 +58,9 @@ body {
 }
 
 .inputDescriptionField {
-    width: 25.4vw;
+    /*  width: 25.4vw; */
     height: 20vh;
+    padding-left: 15px;
     outline: none;
     border-radius: 5px;
     color: #212529;
@@ -93,8 +103,10 @@ p {
 button {
     outline: none;
     border: 1px solid rgb(134, 133, 133);
-    width: 12vw;
+    /* width: 12vw; */
     height: 6vh;
+    width: 10vw;
+    margin-left: 10px;
     border-radius: 5px;
     font-size: 18px;
     background-color: white;
@@ -124,6 +136,7 @@ button:hover {
 }
 
 .userNames {
+    text-align: center;
     color: #1E3190;
     font-size: 12px;
     margin: 2px;
@@ -131,6 +144,9 @@ button:hover {
 }
 
 .userContain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 90px;
     height: 90px;
     opacity: 0.4;
@@ -221,10 +237,10 @@ button:hover {
         padding-left: 30px
     }
     .inputStyle {
-        width: 40vw;
+        /*  width: 40vw; */
     }
     .inputDescriptionField {
-        width: 40vw;
+        /*width: 40vw;*/
     }
     .avartarPicker {
         margin-left: 15px;
@@ -256,17 +272,18 @@ button:hover {
         margin-bottom: 30px;
     }
     .inputStyle {
-        width: 98%;
+        width: 91%;
     }
     .urg-cat {
-        width: 99%;
+        width: 95%;
     }
     .inputDescriptionField {
-        width: 100%;
+        width: 93%;
         height: 80px;
     }
     button {
         height: 5vh;
+        margin-left: 0;
     }
     .buttonContain {
         display: flex;
@@ -289,6 +306,9 @@ button:hover {
     .inputContain {
         width: 85vw;
     }
+    .urg-cat {
+        width: 96%;
+    }
 }
 
 @media (max-width: 510px) {
@@ -299,6 +319,9 @@ button:hover {
         padding-left: 15px;
     }
     .inputStyle {
-        width: 95%;
+        width: 90%;
+    }
+    .urg-cat {
+        width: 98%;
     }
 }

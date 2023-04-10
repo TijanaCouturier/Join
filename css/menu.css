@@ -95,11 +95,13 @@ body {
     font-size: 20px;
     color: white;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     cursor: pointer;
 }
 
 .log-out {
+    text-decoration: none;
+    margin-bottom: 40px;
     color: white;
     opacity: 0.5;
     display: flex;
@@ -227,9 +229,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    bottom: 0px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     color: white !important;
     opacity: 0.5;
     text-decoration: none;
