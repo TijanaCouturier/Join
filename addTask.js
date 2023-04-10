@@ -4,8 +4,8 @@ setURL('https://tijana-couturier.developerakademie.net/smallest_backend_ever');
 let userSelected = false;
 let selectedUsers = [];
 let allTasks = [];
-let userSelcheck; //
-let selAvatarUser; //
+let userSelcheck;
+let selAvatarUser;
 
 let users = [{
         'img': 'Anja.jpg',
@@ -208,10 +208,6 @@ function clearAllInputFolder() {
     document.getElementById('inputUrgency').value = '';
 }
 
-/*
-let today = new Date().toISOString().split('T')[0];
-document.getElementsByName('inputDate')[0].setAttribute('min', today);
-*/
 
 /*
  *  function which adds the menu.html file to the board.html file
