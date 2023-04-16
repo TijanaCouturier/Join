@@ -62,7 +62,7 @@ async function checkUserStatus() {
     stringUserMail.replace(/["\[\]"]+/g, "");
 
     if (stringUserName.includes(currentUserName) && stringUserMail.includes(currentUserMail)) {
-        alert('It seem like you already have an account. We will log you in with that one!👍🏻')
+        //  alert('It seem like you already have an account. We will log you in with that one!👍🏻')
         redirect();
     } else if (!(stringUserName.includes(currentUserName)) && !(stringUserMail.includes(currentUserMail))) {
         usernames.push(currentUserName);
